@@ -40,4 +40,8 @@
   "keywords": [
     "gruntplugin, cdn, google-cdn"
   ],
+  "dependencies": {
+    "google-cdn": "~0.4.0",
+    "google-cdn-data": "~0.1.0"
+  }
 }
