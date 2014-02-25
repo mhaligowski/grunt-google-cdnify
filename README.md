@@ -56,7 +56,7 @@ In this example, the default options are used to do something with whatever. So 
 
 ```js
 grunt.initConfig({
-  google_cdnify: {
+  cdnify: {
     options: {},
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
