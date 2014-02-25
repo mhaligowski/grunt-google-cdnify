@@ -7,7 +7,12 @@ exports.cdnify = {
         done();
     },
     integration: function(test) {
-        test.expect(0);
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/integration/index.html');
+        var expected = grunt.file.read('test/expected/integration/index.html');
+
+        test.equal(actual, expected, 'should make the test from google-cdn site');
 
         test.done();
     }
