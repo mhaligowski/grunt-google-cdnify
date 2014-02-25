@@ -3,7 +3,7 @@
  * https://github.com/mhaligowski/grunt-google-cdnify
  *
  * Copyright (c) 2014 mhaligowski
- * Licensed under the MIT license.
+ * Licensed under the BSD license.
  */
 
 'use strict';
