@@ -39,7 +39,7 @@ module.exports = function(grunt) {
     cdnify: {
       integration: {
         html: [ 'tmp/integration/index.html' ],
-        bower: 'test/integration/bower.json'
+        bower: 'test/fixtures/integration/bower.json'
       },
     },
 
