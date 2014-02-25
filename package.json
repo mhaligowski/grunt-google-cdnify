@@ -17,8 +17,8 @@
   },
   "licenses": [
     {
-      "type": "MIT",
-      "url": "https://github.com/mhaligowski/grunt-google-cdnify/blob/master/LICENSE-MIT"
+      "type": "BSD 2-clause",
+      "url": "https://github.com/mhaligowski/grunt-google-cdnify/blob/master/LICENSE"
     }
   ],
   "engines": {
@@ -31,12 +31,17 @@
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-copy": "~0.5.0",
     "grunt": "~0.4.2"
   },
   "peerDependencies": {
     "grunt": "~0.4.2"
   },
   "keywords": [
-    "gruntplugin"
-  ]
+    "gruntplugin, cdn, google-cdn"
+  ],
+  "dependencies": {
+    "google-cdn": "~0.4.0",
+    "google-cdn-data": "~0.1.0"
+  }
 }

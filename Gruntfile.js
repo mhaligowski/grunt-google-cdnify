@@ -3,7 +3,7 @@
  * https://github.com/mhaligowski/grunt-google-cdnify
  *
  * Copyright (c) 2014 mhaligowski
- * Licensed under the MIT license.
+ * Licensed under the BSD license.
  */
 
 'use strict';
@@ -28,27 +28,21 @@ module.exports = function(grunt) {
       tests: ['tmp'],
     },
 
-    // Configuration to be run (and then tested).
-    google_cdnify: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+    copy: {
+      tests: {
+        files: [
+          {expand: true, cwd: 'test/fixtures', src: '**/*.html', dest: 'tmp/'}
+        ]
+      }
+    },
+
+    cdnify: {
+      integration: {
+        html: [ 'tmp/integration/index.html' ],
+        bower: 'test/fixtures/integration/bower.json'
       },
     },
 
-    // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js'],
     },
@@ -62,10 +56,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'google_cdnify', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'copy', 'cdnify', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
