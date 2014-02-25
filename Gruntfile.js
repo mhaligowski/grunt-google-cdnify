@@ -30,21 +30,9 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     cdnify: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+      integration: {
+        html: [ 'tmp/integration/index.html' ]
+        bower: 'test/integration/bower.json'
       },
     },
 
