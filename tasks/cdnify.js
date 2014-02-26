@@ -9,6 +9,7 @@
 'use strict';
 var fs = require('fs');
 var path = require('path');
+var async = require('async');
 
 var googlecdn = require('google-cdn');
 
@@ -27,19 +28,25 @@ module.exports = function(grunt) {
 
     var files = grunt.file.expand(this.data.html);
 
-    files.forEach(function(filename) {
-        grunt.log.debug("... handling file: " + filename);
+    async.each(
+        files, 
+        function(filename, callback) {
+            grunt.log.writeln("... handling file: " + filename);
 
-        var markup = grunt.file.read(filename);
-        googlecdn(markup, bowerConfig, options, function(err, result) {
-            if (err) { 
-                grunt.log.error(err);
-                throw err; 
-            }
-                
-            grunt.file.write(filename, result);
+            var markup = grunt.file.read(filename);
+            googlecdn(markup, bowerConfig, options, function(err, result) {
+                if (err) { 
+                    grunt.log.error(err);
+                    throw err; 
+                }
+                    
+                grunt.file.write(filename, result);
+                grunt.log.ok();
+                callback();
+            });
+        },
+        function(err) {
             done();
         });
-    });   
-  });
+    });
 };

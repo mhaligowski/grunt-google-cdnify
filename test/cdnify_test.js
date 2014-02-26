@@ -32,5 +32,5 @@ exports.cdnify = {
         test.equal(actual, expected);
 
         test.done();
-    }
+    },
 };
