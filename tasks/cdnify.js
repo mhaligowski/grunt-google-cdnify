@@ -29,10 +29,13 @@ module.exports = function(grunt) {
 
     files.forEach(function(filename) {
         grunt.log.debug("... handling file: " + filename);
-        
+
         var markup = grunt.file.read(filename);
         googlecdn(markup, bowerConfig, options, function(err, result) {
-            if (err) { throw err; }
+            if (err) { 
+                grunt.log.error(err);
+                throw err; 
+            }
                 
             grunt.file.write(filename, result);
             done();

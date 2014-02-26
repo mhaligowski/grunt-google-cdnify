@@ -24,12 +24,12 @@ exports.cdnify = {
         actual = grunt.file.read('tmp/multifile/index001.html');
         expected = grunt.file.read('test/expected/multifile/index001.html');
 
-        test.equal(actual, expected, 'should make the test from google-cdn site for the first html');
+        test.equal(actual, expected);
 
         actual = grunt.file.read('tmp/multifile/index002.html');
         expected = grunt.file.read('test/expected/multifile/index002.html');
 
-        test.equal(actual, expected, 'should make the test from google-cdn site for the second html');
+        test.equal(actual, expected);
 
         test.done();
     }
