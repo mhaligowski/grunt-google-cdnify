@@ -1,7 +1,7 @@
 {
   "name": "grunt-google-cdnify",
   "description": "Grunt task for substituting JS libraries with CDN versions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/mhaligowski/grunt-google-cdnify",
   "author": {
     "name": "mhaligowski",
