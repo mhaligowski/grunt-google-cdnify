@@ -28,6 +28,8 @@ module.exports = function(grunt) {
     var files = grunt.file.expand(this.data.html);
 
     files.forEach(function(filename) {
+        grunt.log.debug("... handling file: " + filename);
+        
         var markup = grunt.file.read(filename);
         googlecdn(markup, bowerConfig, options, function(err, result) {
             if (err) { throw err; }
