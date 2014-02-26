@@ -25,7 +25,9 @@ module.exports = function(grunt) {
         components_path: 'bower_components'
     });
 
-    this.data.html.forEach(function(filename) {
+    var files = grunt.file.expand(this.data.html);
+
+    files.forEach(function(filename) {
         var markup = grunt.file.read(filename);
         googlecdn(markup, bowerConfig, options, function(err, result) {
             if (err) { throw err; }
