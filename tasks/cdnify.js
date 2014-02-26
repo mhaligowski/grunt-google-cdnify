@@ -9,6 +9,7 @@
 'use strict';
 var fs = require('fs');
 var path = require('path');
+var async = require('async');
 
 var googlecdn = require('google-cdn');
 
@@ -25,14 +26,27 @@ module.exports = function(grunt) {
         components_path: 'bower_components'
     });
 
-    this.data.html.forEach(function(filename) {
-        var markup = grunt.file.read(filename);
-        googlecdn(markup, bowerConfig, options, function(err, result) {
-            if (err) { throw err; }
-                
-            grunt.file.write(filename, result);
+    var files = grunt.file.expand(this.data.html);
+
+    async.each(
+        files, 
+        function(filename, callback) {
+            grunt.log.writeln("... handling file: " + filename);
+
+            var markup = grunt.file.read(filename);
+            googlecdn(markup, bowerConfig, options, function(err, result) {
+                if (err) { 
+                    grunt.log.error(err);
+                    throw err; 
+                }
+                    
+                grunt.file.write(filename, result);
+                grunt.log.ok();
+                callback();
+            });
+        },
+        function(err) {
             done();
         });
-    });   
-  });
+    });
 };

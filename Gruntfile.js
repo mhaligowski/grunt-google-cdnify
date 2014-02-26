@@ -41,10 +41,14 @@ module.exports = function(grunt) {
         html: [ 'tmp/integration/index.html' ],
         bower: 'test/fixtures/integration/bower.json'
       },
+      multifile: {
+        html: [ 'tmp/multifile/*.html' ],
+        bower: 'test/fixtures/multifile/bower.json'
+      }
     },
 
     nodeunit: {
-      tests: ['test/*_test.js'],
+      tests: ['test/**_test.js'],
     },
 
   });
