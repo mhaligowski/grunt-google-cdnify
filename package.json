@@ -38,7 +38,9 @@
     "grunt": "~0.4.2"
   },
   "keywords": [
-    "gruntplugin, cdn, google-cdn"
+    "gruntplugin",
+    "cdn",
+    "google-cdn"
   ],
   "dependencies": {
     "google-cdn": "~0.4.0",
